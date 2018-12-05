@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>xxx接口测试报告测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- bingtu ------------------------------------------------------------------------ */
+canvas{
+            border: 1px solid #A4E2F9;
+        }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/*level 调整增加只显示通过用例的分类 
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+
+    //加入【详细】切换文字变化 
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化
+
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">xxx接口测试报告测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> 骆庆福，刘志峥，郭欣</p>
+<p class='attribute'><strong>开始时间 : </strong> 2018-12-05 17:04:52</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:00.668556</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 1，通过 1，通过率= 100.00%</p>
+
+<p class='description'>我是一个描述，暂时没有想到怎么写</p>
+</div>
+
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 1 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 1 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>userinfo_test.TestUserInfo</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userinfo</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou-->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  
+
+    <!-- 默认展开错误信息 -Findyou 
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in">-->
+    <pre>
+    
+pt1_1: {'code': 1, 'msg': '获取成功！', 'data': {'id': 855, 'mobile': '+86-13226349780', 'user_email': '', 'user_type': 2, 'user_login': '', 'user_name': None, 'user_nickname': '我是昵称', 'qq_openid': None, 'weibo_openid': None, 'weixin_unionid': None, 'sex': 0, 'birthday': 0, 'score': 0, 'balance': '0.00', 'user_status': 1, 'avatar': 'https://elitelive.oss-cn-shenzhen.aliyuncs.com/default/avatar/18.png', 'signature': '', 'last_login_ip': '116.23.231.156', 'unique': '343387316bb35c06a398cfd128c8844a', 'im_token': '65d13b5118a17b93bc24474d8f6821a9', 'more': None, 'last_login_time': 1544000694, 'create_time': 1538117417, 'update_time': 1544000694, 'delete_time': None, 'has_pass': 1}, 'runtime': 0.02}
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>通过率：100.00%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+
+
+     <div height="400" width="600" style="margin:50px">
+        <canvas id="chart"> 你的浏览器不支持HTML5 canvas </canvas>
+    </div>
+    <script type="text/javascript">
+        function goChart(dataArr){
+
+            // 声明所需变量
+            var canvas,ctx;
+            // 图表属性
+            var cWidth, cHeight, cMargin, cSpace;
+            // 饼状图属性
+            var radius,ox,oy;//半径 圆心
+            var tWidth, tHeight;//图例宽高
+            var posX, posY, textX, textY;
+            var startAngle, endAngle;
+            var totleNb;
+            // 运动相关变量
+            var ctr, numctr, speed;
+            //鼠标移动
+            var mousePosition = {};
+
+            //线条和文字
+            var lineStartAngle,line,textPadding,textMoveDis;
+
+            // 获得canvas上下文
+            canvas = document.getElementById("chart");
+            if(canvas && canvas.getContext){
+                ctx = canvas.getContext("2d");
+            }
+            initChart(); 
+
+            // 图表初始化
+            function initChart(){
+                // 图表信息
+                cMargin = 20;
+                cSpace = 40;
+
+                canvas.width = canvas.parentNode.getAttribute("width")* 2 ;
+                canvas.height = canvas.parentNode.getAttribute("height")* 2;
+                canvas.style.height = canvas.height/2 + "px";
+                canvas.style.width = canvas.width/2 + "px";
+                cHeight = canvas.height - cMargin*2;
+                cWidth = canvas.width - cMargin*2;
+
+                //饼状图信息
+                radius = cHeight*2/6;  //半径  高度的2/6
+                ox = canvas.width/2 + cSpace;  //圆心
+                oy = canvas.height/2;
+                tWidth = 60; //图例宽和高
+                tHeight = 20; 
+                posX = cMargin;
+                posY = cMargin;   //
+                textX = posX + tWidth + 15
+                textY = posY + 18;
+                startAngle = endAngle = 90*Math.PI/180; //起始弧度 结束弧度
+                rotateAngle = 0; //整体旋转的弧度
+
+                //将传入的数据转化百分比
+                totleNb = 0;
+                new_data_arr = [];
+                for (var i = 0; i < dataArr.length; i++){
+                    totleNb += dataArr[i][0];
+                }
+                for (var i = 0; i < dataArr.length; i++){
+                    new_data_arr.push( dataArr[i][0]/totleNb );
+                }
+                totalYNomber = 10;
+                // 运动相关
+                ctr = 1;//初始步骤
+                numctr = 50;//步骤
+                speed = 1.2; //毫秒 timer速度
+
+                //指示线 和 文字
+                lineStartAngle = -startAngle;
+                line=40;         //画线的时候超出半径的一段线长
+                textPadding=10;  //文字与线之间的间距
+                textMoveDis = 200; //文字运动开始的间距
+            }
+
+            drawMarkers();
+            //绘制比例图及文字
+            function drawMarkers(){
+                ctx.textAlign="left";
+                for (var i = 0; i < dataArr.length; i++){
+                    //绘制比例图及文字
+                    ctx.fillStyle = dataArr[i][1];
+                    ctx.fillRect(posX, posY + 40 * i, tWidth, tHeight);
+                    ctx.moveTo(posX, posY + 40 * i);
+                    ctx.font = 'normal 24px 微软雅黑';    //斜体 30像素 微软雅黑字体
+                    ctx.fillStyle = dataArr[i][1]; //"#000000";
+                    var percent = dataArr[i][2] + "：" + parseInt(100 * new_data_arr[i]) + "%";
+                    ctx.fillText(percent, textX, textY + 40 * i);
+                }
+            };
+
+            //绘制动画
+            pieDraw();
+            function pieDraw(mouseMove){
+
+                for (var n = 0; n < dataArr.length; n++){
+                    ctx.fillStyle = ctx.strokeStyle = dataArr[n][1];
+                    ctx.lineWidth=1;
+                    var step = new_data_arr[n]* Math.PI * 2; //旋转弧度
+                    var lineAngle = lineStartAngle+step/2;   //计算线的角度
+                    lineStartAngle += step;//结束弧度
+
+                    ctx.beginPath();
+                    var  x0=ox+radius*Math.cos(lineAngle),//圆弧上线与圆相交点的x坐标
+                        y0=oy+radius*Math.sin(lineAngle),//圆弧上线与圆相交点的y坐标
+                        x1=ox+(radius+line)*Math.cos(lineAngle),//圆弧上线与圆相交点的x坐标
+                        y1=oy+(radius+line)*Math.sin(lineAngle),//圆弧上线与圆相交点的y坐标
+                        x2=x1,//转折点的x坐标
+                        y2=y1,
+                        linePadding=ctx.measureText(dataArr[n][2]).width+10; //获取文本长度来确定折线的长度
+
+                        ctx.moveTo(x0,y0);
+                        //对x1/y1进行处理，来实现折线的运动
+                        yMove = y0+(y1-y0)*ctr/numctr;
+                        ctx.lineTo(x1,yMove);
+                        if(x1<=x0){
+                            x2 -= line;
+                            ctx.textAlign="right";
+                            ctx.lineTo(x2-linePadding,yMove);
+                            ctx.fillText(dataArr[n][2],x2-textPadding-textMoveDis*(numctr-ctr)/numctr,y2-textPadding);
+                        }else{
+                            x2 += line;
+                            ctx.textAlign="left";
+                            ctx.lineTo(x2+linePadding,yMove);
+                            ctx.fillText(dataArr[n][2],x2+textPadding+textMoveDis*(numctr-ctr)/numctr,y2-textPadding);
+                        }
+
+                        ctx.stroke();
+
+                }
+
+
+
+                //设置旋转
+                ctx.save();
+                ctx.translate(ox, oy);
+                ctx.rotate((Math.PI*2/numctr)*ctr/2);
+
+                //绘制一个圆圈
+                ctx.strokeStyle = "rgba(0,0,0,"+ 0.5*ctr/numctr +")"
+                ctx.beginPath();
+                ctx.arc(0, 0 ,(radius+20)*ctr/numctr, 0, Math.PI*2, false);
+                ctx.stroke();
+
+                for (var j = 0; j < dataArr.length; j++){
+
+                    //绘制饼图
+                    endAngle = endAngle + new_data_arr[j]* ctr/numctr * Math.PI * 2; //结束弧度
+
+                    ctx.beginPath();
+                    ctx.moveTo(0,0); //移动到到圆心
+                    ctx.arc(0, 0, radius*ctr/numctr, startAngle, endAngle, false); //绘制圆弧
+
+                    ctx.fillStyle = dataArr[j][1];
+                    if(mouseMove && ctx.isPointInPath(mousePosition.x*2, mousePosition.y*2)){
+                        ctx.globalAlpha = 0.8;
+                    }
+
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+
+                    startAngle = endAngle; //设置起始弧度
+                    if( j == dataArr.length-1 ){
+                        startAngle = endAngle = 90*Math.PI/180; //起始弧度 结束弧度
+                    }
+                }
+
+                ctx.restore();
+
+                if(ctr<numctr){
+                    ctr++;
+                    setTimeout(function(){
+                        //ctx.clearRect(-canvas.width,-canvas.width,canvas.width*2, canvas.height*2);
+                        ctx.clearRect(-canvas.width, -canvas.height,canvas.width*2, canvas.height*2);
+                        drawMarkers();
+                        pieDraw();
+                    }, speed*=1.085);
+                }
+            }
+
+
+
+            //监听鼠标移动
+            var mouseTimer = null;
+            canvas.addEventListener("mousemove",function(e){
+                e = e || window.event;
+                if( e.offsetX || e.offsetX==0 ){
+                    mousePosition.x = e.offsetX;
+                    mousePosition.y = e.offsetY;
+                }else if( e.layerX || e.layerX==0 ){
+                    mousePosition.x = e.layerX;
+                    mousePosition.y = e.layerY;
+                }
+
+                clearTimeout(mouseTimer);
+                mouseTimer = setTimeout(function(){
+                    ctx.clearRect(0,0,canvas.width, canvas.height);
+                    drawMarkers();
+                    pieDraw(true);
+                },10);
+            });
+
+
+
+        }
+
+        var chartData = [[0,"#f0ad4e","错误"], [0,"#d9534f", "失败"], [1,"#5cb85c","成功"],];
+
+        goChart(chartData);
+
+
+
+    </script>
+    
+
+</body>
+</html>
