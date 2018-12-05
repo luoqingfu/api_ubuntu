@@ -61,7 +61,7 @@ def get_list():
     suite_module = []
     list = get_case_list()
     for value in list:
-        case_path = os.path.join(logger.localReadConfig, "testCase")
+        case_path = os.path.join(logger.localReadConfig, "TestCase")
         discover = unittest.defaultTestLoader.discover(case_path,   pattern=value.split("/")[-1]+'.py', top_level_dir=None)
         suite_module.append(discover)
     #print(suite_module, "suite_module")
