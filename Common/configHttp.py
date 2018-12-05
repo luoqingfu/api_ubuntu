@@ -1,7 +1,7 @@
 
 
 import requests
-from Common import readConfig
+import readConfig
 from Common.logger import Logger
 
 logger  = Logger("ConfigHttp").get_logger()
