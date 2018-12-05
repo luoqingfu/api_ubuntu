@@ -1,4 +1,4 @@
-import readConfig
+from Common import readConfig
 from Common.configHttp import ConfigHttp
 from Common.logger import Logger
 

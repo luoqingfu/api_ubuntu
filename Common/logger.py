@@ -1,7 +1,7 @@
 import logging
 import os
 from datetime import datetime
-import readConfig
+from Common import readConfig
 
 localReadConfig = readConfig.Presendt_path      #获取配置文件的当前路径
 class Logger:
